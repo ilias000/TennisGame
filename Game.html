@@ -1,7 +1,5 @@
 <html>
-
-<canvas id="Canvas" width="800" height="600"></canvas>
-
+    <canvas id="Canvas" width="800" height="600"></canvas>
     <script>
         var canvas; // It will represent to the  Canvas.
         var canvasContext; // It will represent the graphical information of canvas.
@@ -36,18 +34,20 @@
 
         function initialize() {
             // Canvas
-            canvasContext.fillStyle = "black";
-            canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+            colorRect("black", 0, 0, canvas.width, canvas.height)
             
             // Racket
-            canvasContext.fillStyle = "white";
-            canvasContext.fillRect(10, 300, 5, 70);
+            colorRect("white", 10, 300, 5, 70)
 
             // Ball
-            canvasContext.fillStyle = "red";
-            canvasContext.fillRect(ballPositionX, ballPositionY, ballWidth, ballHeight); // pixels from the left, pixels from the top (It sets the distance from the up-left pixel so if you want to put it on the center of the screen you have to "cut it in half")
+            colorRect("red", ballPositionX, ballPositionY, ballWidth, ballHeight)
             
             // Whatever shape you put last will overlap the others.
+        }
+
+        function colorRect(color, pixelsFromLeft, pixelsFromTop, width, height) {
+            canvasContext.fillStyle = color;
+            canvasContext.fillRect(pixelsFromLeft, pixelsFromTop, width, height); // pixels from the left, pixels from the top (It sets the distance from the up-left pixel so if you want to put it on the center of the screen you have to "cut it in half")
         }
     </script>
 </html>
