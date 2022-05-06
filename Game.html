@@ -1,0 +1,53 @@
+<html>
+
+<canvas id="Canvas" width="800" height="600"></canvas>
+
+    <script>
+        var canvas; // It will represent to the  Canvas.
+        var canvasContext; // It will represent the graphical information of canvas.
+        
+        var ballPositionX = 50; // Horizontal position of the ball.
+        var ballPositionY = 200; // Vertical position of the ball.
+        var ballWidth = 10; // Width of the ball.
+        var ballHeight = 10; // Height of the ball.
+        var ballSpeedX = 3; // Horizontal speed of the ball.
+
+
+        window.onload = function() { // The code will run only after the page is loaded.
+            canvas = document.getElementById("Canvas");
+            canvasContext = canvas.getContext("2d");
+            
+            var fps = 60;
+            setInterval(play, 1000/fps); // 1000 -> 1sec
+        }
+        
+        function play() {
+            initialize();
+            start();
+        }
+
+        function start() {
+            ballPositionX = ballPositionX + ballSpeedX; // Changing thw position of the ball speed pixels.
+
+            if (ballPositionX > canvas.width - ballWidth || ballPositionX < 0){
+                ballSpeedX = - ballSpeedX;
+            }
+        }
+
+        function initialize() {
+            // Canvas
+            canvasContext.fillStyle = "black";
+            canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Racket
+            canvasContext.fillStyle = "white";
+            canvasContext.fillRect(10, 300, 5, 70);
+
+            // Ball
+            canvasContext.fillStyle = "red";
+            canvasContext.fillRect(ballPositionX, ballPositionY, ballWidth, ballHeight); // pixels from the left, pixels from the top (It sets the distance from the up-left pixel so if you want to put it on the center of the screen you have to "cut it in half")
+            
+            // Whatever shape you put last will overlap the others.
+        }
+    </script>
+</html>
