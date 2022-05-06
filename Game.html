@@ -3,6 +3,14 @@
     <script>
         var canvas; // It will represent to the  Canvas.
         var canvasContext; // It will represent the graphical information of canvas.
+
+        var canvasPositionX = 0; // Horizontal position of canvas.
+        var canvasPositionY = 0; // Vertical position of canvas.
+
+        var racketPositionX = 10; // Horizontal position of racket.
+        var racketPositionY = 300; // Vertical position of racket.
+        var racketWidth = 5; // Width of racket.
+        var racketHeight = 70; // Height of racket.
         
         var ballPositionX = 50; // Horizontal position of the ball.
         var ballPositionY = 200; // Vertical position of the ball.
@@ -16,7 +24,7 @@
             canvasContext = canvas.getContext("2d");
             
             var fps = 60;
-            setInterval(play, 1000/fps); // 1000 -> 1sec
+            setInterval(play, 1000/fps); // 1000 -> 1sec.
         }
         
         function play() {
@@ -34,10 +42,10 @@
 
         function initialize() {
             // Canvas
-            colorRect("black", 0, 0, canvas.width, canvas.height)
+            colorRect("black", canvasPositionX, canvasPositionY, canvas.width, canvas.height)
             
             // Racket
-            colorRect("white", 10, 300, 5, 70)
+            colorRect("white", racketPositionX, racketPositionY, racketWidth, racketHeight)
 
             // Ball
             colorRect("red", ballPositionX, ballPositionY, ballWidth, ballHeight)
